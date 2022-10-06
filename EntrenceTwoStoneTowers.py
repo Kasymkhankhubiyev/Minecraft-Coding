@@ -2,12 +2,12 @@ from mcpi.minecraft import Minecraft
 
 mc = Minecraft.create()
 
-def buildCastle(x0, y0, z0):
-    height = 7
-    width = 5
-    length = 5
-
-    mc.setBlock(x0, y0, z0, 4)
+def buildCastle(x0, y0, z0, length, height, width):
+    height = height
+    width = width
+    length = length
+    
+    #mc.setBlock(x0, y0, z0, 4)
 
     #clears area for a building
 
@@ -62,17 +62,20 @@ def buildEntrence(x0, y0, z0, length, height, width):
     mc.setBlocks(x0+stpoint+1, y0+3, z0+width-1, x0+stpoint+2, y0+3, z0+width-1,85)
     mc.setBlocks(x0, y0+height, z0+width/2, x0+length, y0+height, z0+width/2, 0)
 
-def buildTwoTowers(x0, y0, z0, towersdist):
-    buildCastle(x0, y0, z0)
-    buildCastle(x0+5+towersdist, y0, z0)
+def buildTwoTowers(x0, y0, z0, towersdist, length, height, width):
+    buildCastle(x0, y0, z0, length, height, width)
+    buildCastle(x0+length+towersdist, y0, z0, length, height, width)
     buildEntrence(x0+5, y0, z0+1, towersdist, 5, 3)
 
 
-x0 =74 # pos.x
-y0 =96 # pos.y
-z0 =-265 # pos.z
-towersdist = 8
+#x0 =157 # pos.x
+#y0 =94 # pos.y
+#z0 =-149 # pos.z
+#towersdist = 12
 
-mc.setBlocks(x0-7, y0, z0-7, x0+17, y0+ 17, z0+7, 0)
-mc.setBlocks(x0-7, y0-1, z0-7, x0+17, y0-1, z0+7, 2)
-buildTwoTowers(x0, y0, z0, towersdist)
+#pos = mc.player.getTilePos()
+#mc.postToChat(str(pos.x)+', ' + str(pos.y) + ', ' + str(pos.z))
+
+#mc.setBlocks(x0-17, y0, z0-17, x0+27, y0+ 17, z0+17, 0)
+#mc.setBlocks(x0-7, y0-1, z0-7, x0+17, y0-1, z0+7, 2)
+#buildTwoTowers(x0, y0, z0, towersdist)

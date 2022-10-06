@@ -2,7 +2,7 @@ from mcpi.minecraft import Minecraft
 
 mc = Minecraft.create()
 
-def WesrPropWall(x0, y0, z0, length, height, width):
+def WestPropWall(x0, y0, z0, length, height, width):
     #в сторону роста оси Х
 
     mc.setBlocks(x0, y0, z0, x0+length-1, y0+height-1, z0+width-1, 98)
@@ -46,16 +46,22 @@ def SouthPropWall(x0, y0, z0, length, height, width):
         mc.setBlock(x0, y0+height-1, z0+i, 44)
         mc.setBlock(x0+width-1, y0+height-1, z0+i, 44)
 
+#pos = mc.player.getTilePos()
+
+#x0 = 156
+#y0 = 94
+#z0 = -148
+#length = 50
+#width = 3
+#height= 5
 
 
-x0 = 74
-y0 = 96
-z0 = -265
-length = 10
-width = 3
-height= 5
 
-mc.setBlocks(x0-17, y0, z0-17, x0+17, y0+ 17, z0+17, 0)
+#mc.setBlocks(x0-17, y0, z0-17, x0+17, y0+ 17, z0+17, 0)
 
-NorthPropWall(x0, y0, z0, length, height, width)
+#NorthPropWall(pos.x + 2, pos.y, pos.z, length, height, width)
+#EastPropWall(x0, y0, z0, 73, height, width)
+#SouthPropWall(x0, y0, z0, length, height, width)
+#WesrPropWall(pos.x, y0, pos.z+2, 70+50+10+10+22, height, width)
+
 

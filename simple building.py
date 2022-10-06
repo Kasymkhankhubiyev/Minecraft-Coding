@@ -2,9 +2,11 @@ from mcpi.minecraft import Minecraft
 
 mc = Minecraft.create()
 
-x0 = 155.
-y0 = 90.
-z0 = -336.
+pos = mc.player.getTilePos()
+
+x0 = pos.x #155.
+y0 = pos.y #90.
+z0 = pos.z #-336.
 
 #pos = mc.player.getTilePos()
 
@@ -44,7 +46,7 @@ def build_simple_house(x0, y0, z0, floor, silling, walls, floor_state):
             mc.setBlock(x0+j, y0+height-1, z0+i, silling, floor_state)
 
 for i in range(N):
-    #build_simple_house(x0, y0, z0, 0, 0, 0, 0)
+    build_simple_house(x0, y0, z0, 0, 0, 0, 0)
     build_simple_house(x0, y0, z0, 179, 179, 179, 2)
     x0 += distance + length
         
