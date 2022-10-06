@@ -49,8 +49,11 @@ def buildCastle(x0, y0, z0):
 
 
 def buildEntrence(x0, y0, z0, length, height, width):
-    mc.setBlocks(x0, y0, z0, x0+length, y0+height, z0+width-1, 4)
-    stpoint = length/2 - 1
+    mc.setBlocks(x0, y0, z0, x0+length-1, y0+height, z0+width-1, 4)
+    if (length % 2) == 0:
+        stpoint = length/2-2
+    else:
+        stpoint = length/2 - 1
     mc.setBlocks(x0+stpoint, y0, z0, x0+stpoint+3, y0+2, z0+width-1, 0)
     mc.setBlocks(x0+stpoint+1, y0+3, z0, x0+stpoint+2, y0+3, z0, 85)
     mc.setBlock(x0+stpoint+1, y0+3, z0+1, 50, 1)
@@ -59,16 +62,17 @@ def buildEntrence(x0, y0, z0, length, height, width):
     mc.setBlocks(x0+stpoint+1, y0+3, z0+width-1, x0+stpoint+2, y0+3, z0+width-1,85)
     mc.setBlocks(x0, y0+height, z0+width/2, x0+length, y0+height, z0+width/2, 0)
 
-def buildTwoTowers(x0, y0, z0):
+def buildTwoTowers(x0, y0, z0, towersdist):
     buildCastle(x0, y0, z0)
-    buildCastle(x0+13, y0, z0)
-    buildEntrence(x0+5, y0, z0+1, 7, 5, 3)
+    buildCastle(x0+5+towersdist, y0, z0)
+    buildEntrence(x0+5, y0, z0+1, towersdist, 5, 3)
 
 
 x0 =74 # pos.x
 y0 =96 # pos.y
 z0 =-265 # pos.z
+towersdist = 8
 
 mc.setBlocks(x0-7, y0, z0-7, x0+17, y0+ 17, z0+7, 0)
 mc.setBlocks(x0-7, y0-1, z0-7, x0+17, y0-1, z0+7, 2)
-buildTwoTowers(x0, y0, z0)
+buildTwoTowers(x0, y0, z0, towersdist)
