@@ -3,7 +3,7 @@ from mcpi.minecraft import Minecraft
 mc = Minecraft.create()
 
 
-def buildCastle(x0, y0, z0, height, width, length): #position): - todo
+def buildCastle(x0, y0, z0, height, width, length, position):
     #position == 0 - дверь на +Z
     #position == 1 - дверь на -z
     #position == 2 - дверь на +х
@@ -41,8 +41,28 @@ def buildCastle(x0, y0, z0, height, width, length): #position): - todo
 
     #Декорируем
 
-    mc.setBlocks(x0+length/2, y0, z0+width-1, x0+length/2, y0 + 1, z0+width-1, 0)
-    mc.setBlocks(x0+length/2, y0, z0+1, x0+length/2, y0 + height, z0+1, 65, 3)
+    if position == 0:
+        #дырка для двери
+        mc.setBlocks(x0+length/2, y0, z0+width-1, x0+length/2, y0 + 1, z0+width-1, 0)
+        #ставим лестницу
+        mc.setBlocks(x0+length/2, y0, z0+1, x0+length/2, y0 + height, z0+1, 65, 3)
+    elif position == 1:
+        #дырка для двери
+        mc.setBlocks(x0+length/2, y0, z0, x0+length/2, y0 + 1, z0, 0)
+        #ставим лестницу
+        mc.setBlocks(x0+length/2, y0, z0+width-2, x0+length/2, y0 + height, z0+width-2, 65)
+    elif position == 2:
+        #дырка для двери
+        mc.setBlocks(x0+length-1, y0, z0+width/2, x0+length-1, y0 + 1, z0+width/2, 0)
+        #ставим лестницу
+        mc.setBlocks(x0+1, y0, z0+width/2, x0+1, y0 + height, z0+width/2, 65, 3)
+    elif position == 3:
+        #дырка для двери
+        mc.setBlocks(x0, y0, z0+width/2, x0, y0 + 1, z0+width/2, 0)
+        #ставим лестницу
+        mc.setBlocks(x0+length - 2, y0, z0+width/2, x0+length-2, y0 + height, z0+width/2, 65, 3)
+
+    #50 - факел
     mc.setBlock(x0-1, y0+height+2, z0-1, 50)
     mc.setBlock(x0-1, y0+height+2, z0+width, 50)
     mc.setBlock(x0+length, y0+height+2, z0-1, 50)
